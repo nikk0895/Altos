@@ -1,6 +1,6 @@
 <nav class="navbar">
   <span class="navbar-user">👤 Admin</span>
-  <button class="logout-btn">Logout</button>
+  <button class="logout-btn" (click)="logout()">Logout</button> <!-- ✅ Added (click) -->
   <ul class="navbar-links">
     <li><a routerLink="/dashboard">Dashboard</a></li>
     <li><a routerLink="/configurator">Configurator</a></li>

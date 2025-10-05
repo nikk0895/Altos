@@ -11,9 +11,10 @@ import { AuthGuard } from './core/auth/auth.guard';
 import { RoleGuard } from './core/auth/role.guard';
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'configurator', component: ConfiguratorComponent, canActivate: [RoleGuard] },
   { path: 'logs', component: LogsComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: 'login' }
+  { path: '**', redirectTo: 'login' }  // wildcard (backup)
 ];

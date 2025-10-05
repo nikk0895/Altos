@@ -1,22 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
-  constructor(private http: HttpClient) {}
 
-  login(username: string, password: string) {
-    return this.http.post<any>('/api/auth/login', { username, password }).pipe(
-      tap(res => {
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('role', res.role);
-      })
-    );
-  }
-
-  logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
+  login(username: string, password: string): Observable<any> {
+    // Dummy hardcoded credentials
+    if (username === 'admin' && password === '12345') {
+      // Simulate backend delay
+      return of({ token: 'dummy-token' }).pipe(delay(500));
+    } else {
+      return throwError(() => new Error('Invalid credentials'));
+    }
   }
 }
