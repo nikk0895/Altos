@@ -1,9 +1,8 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +12,17 @@ import { isPlatformBrowser } from '@angular/common';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username = '';
+  // ✅ Shared fields
+  email = '';
   password = '';
   errorMessage = '';
+
+  // ✅ Signup fields
+  firstName = '';
+  lastName = '';
+
+  // ✅ Toggle between login/signup
+  isLoginMode = true;
 
   constructor(
     private router: Router,
@@ -24,7 +31,6 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // ✅ Check if code runs in the browser
     if (isPlatformBrowser(this.platformId)) {
       const token = localStorage.getItem('token');
       if (token) {
@@ -33,19 +39,39 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  // ✅ Switch mode
+  toggleMode(): void {
+    this.isLoginMode = !this.isLoginMode;
+    this.errorMessage = '';
+  }
+
+  // ✅ Login method
   login(): void {
-  if (!isPlatformBrowser(this.platformId)) return; // SSR-safe guard
+    if (!isPlatformBrowser(this.platformId)) return;
 
-  this.authService.login(this.username, this.password).subscribe({
-    next: (response) => {
-      localStorage.setItem('token', response.token); // ✅ Save mock token
-      this.errorMessage = '';
-      this.router.navigate(['/dashboard']); // ✅ Navigate
-    },
-    error: () => {
-      this.errorMessage = 'Invalid credentials';
-    }
-  });
-}
+    this.authService.login(this.email, this.password).subscribe({
+      next: (response) => {
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['/dashboard']);
+      },
+      error: () => {
+        this.errorMessage = 'Invalid email or password';
+      }
+    });
+  }
 
+  // ✅ Signup method
+  signup(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    this.authService.signup(this.firstName, this.lastName, this.email, this.password).subscribe({
+      next: () => {
+        alert('Signup successful! Please log in.');
+        this.toggleMode(); // Switch to login mode
+      },
+      error: () => {
+        this.errorMessage = 'Signup failed. Try again.';
+      }
+    });
+  }
 }

@@ -16,14 +16,14 @@ export class AuthGuard implements CanActivate {
     if (isPlatformBrowser(this.platformId)) {
       const token = localStorage.getItem('token');
       if (token) {
-        return true; // ✅ logged in
+        return true; // logged in
       } else {
         this.router.navigate(['/login']);
         return false;
       }
     }
 
-    // 🚫 If it's running on the server (SSR), just block access
+    // If it's running on the server (SSR), just block access
     return false;
   }
 }

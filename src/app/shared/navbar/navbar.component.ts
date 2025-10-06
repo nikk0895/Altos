@@ -13,7 +13,7 @@ export class NavbarComponent {
   constructor(private router: Router) {}
 
   logout(): void {
-    // ✅ Remove token and navigate to login page
+    // Remove token and navigate to login page
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
