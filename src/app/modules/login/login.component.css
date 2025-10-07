@@ -8,7 +8,7 @@
   color: #1f1f2e;
   font-family: 'Inter', sans-serif;
   box-sizing: border-box;
-  overflow-x: hidden; /* prevent horizontal side-scroll */
+  overflow-x: hidden;
 }
 
 /* ========== LEFT IMAGE SECTION ========== */
@@ -119,21 +119,50 @@
 /* Logo container */
 .logo-container {
   position: absolute;
-  top: 24px;
+  top: 64px;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 150px;
   pointer-events: none;
-  height: 96px;
 }
 
+/* Inner wrapper for proper centering */
+.logo-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+/* Logo styling */
 .logo {
   width: 200px;
   height: auto;
-  pointer-events: auto;
+  object-fit: contain;
 }
+
+/* Tagline styling */
+.tagline {
+  text-align: center;
+  font-size: 1.05rem;
+  color: #2f2f2f;
+  font-weight: 500;
+  line-height: 1.6;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.tagline b {
+  color: #007bff;
+  font-weight: 700;
+}
+
+
 
 /* Header */
 .form-header {
@@ -160,16 +189,14 @@
   font-weight: 500;
 }
 
-/* Form content */
 .form-content {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* uniform spacing */
+  gap: 12px; 
   margin-top: 0;
   box-sizing: border-box;
 }
 
-/* Inputs */
 .form-content input[type="text"],
 .form-content input[type="email"],
 .form-content input[type="password"] {
@@ -181,7 +208,7 @@
   border-radius: 8px;
   font-size: 0.95rem;
   transition: all 0.3s ease;
-  box-sizing: border-box; /* aligns width with button */
+  box-sizing: border-box; 
 }
 
 .form-content input:focus {
@@ -193,12 +220,12 @@
 /* Button */
 .primary-btn {
   width: 100%;
-  box-sizing: border-box; /* aligns with inputs */
+  box-sizing: border-box; 
   background-color: #007bff;
   color: #fff;
   border: none;
   padding: 12px;
-  margin-top: 10px; /* tighter gap */
+  margin-top: 10px; 
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
@@ -209,29 +236,63 @@
 .primary-btn:hover {
   background-color: #0056b3;
 }
-/* Name fields (first + last name) */
+
 .name-fields {
   display: flex;
-  gap: 8px; /* space between */
+  gap: 8px; 
 }
 
 .name-fields input {
-  flex: 1;           /* each input grows equally */
-  min-width: 0;      /* prevents overflow */
+  flex: 1;           
+  min-width: 0;      
   box-sizing: border-box;
+}
+.error { color: #d9534f; font-size: 0.9rem; margin-top: 10px; text-align: center; }
+
+
+/* ========== FADE-IN + SLIDE-UP ANIMATION ========== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
-/* Responsive */
+/* ========== RESPONSIVE DESIGN ========== */
 @media (max-width: 900px) {
   .auth-form {
     padding: 40px 20px;
   }
   .form-header {
-    margin-top: 80px; /* smaller gap for mobile */
+    margin-top: 80px; 
   }
 }
+/* Mobile adjustment */
+@media (max-width: 768px) {
+  .logo {
+    width: 150px;
+  }
 
+  .tagline {
+    font-size: 0.95rem;
+    max-width: 350px;
+  }
+
+  .logo-container {
+    height: 120px;
+  }
+}
 
 /* Divider & Social Buttons */
 /* .divider {

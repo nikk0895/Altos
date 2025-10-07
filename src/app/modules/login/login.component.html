@@ -18,49 +18,51 @@
 
 
   <!-- Right Form Section -->
-  <div class="auth-form">
-    <!-- Logo section -->
+  <!-- Right Form Section -->
+<div class="auth-form">
+  <!-- Logo & tagline section -->
   <div class="logo-container">
-    <img src="assets/logo.png" alt="App Logo" class="logo" />
-  </div>
-    <div class="form-header">
-      <h2>{{ isLoginMode ? 'Welcome Back' : 'Create an account' }}</h2>
-      <p>
-        {{ isLoginMode ? "Don't have an account?" : "Already have an account?" }}
-        <a href="#" (click)="toggleMode(); $event.preventDefault();">
-          {{ isLoginMode ? "Sign up here" : "Log in" }}
-        </a>
+    <div class="logo-content fade-in-up">
+      <img src="assets/logo.png" alt="App Logo" class="logo" />
+      <p class="tagline">
+        Empowering the healthcare industry with <br/>
+        <b>Excellent and reliable solutions and services</b>.
       </p>
     </div>
-
-    <form (ngSubmit)="isLoginMode ? login() : signup()" class="form-content">
-      <div *ngIf="!isLoginMode" class="name-fields">
-        <input type="text" placeholder="First name" [(ngModel)]="firstName" name="firstName" required />
-        <input type="text" placeholder="Last name" [(ngModel)]="lastName" name="lastName" required />
-      </div>
-
-      <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
-      <input type="password" placeholder="Enter your password" [(ngModel)]="password" name="password" required />
-
-      <div *ngIf="!isLoginMode" class="terms">
-        <label>
-          <input type="checkbox" required />
-          I agree to the <a href="#">Terms & Conditions</a>
-        </label>
-      </div>
-
-      <button type="submit" class="primary-btn">
-        {{ isLoginMode ? 'Login' : 'Create account' }}
-      </button>
-
-      <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
-
-      <!-- <div class="divider" *ngIf="!isLoginMode">Or register with</div> -->
-
-      <!-- <div class="social-buttons" *ngIf="!isLoginMode">
-        <button type="button" class="social-btn google">Google</button>
-        <button type="button" class="social-btn apple">Apple</button>
-      </div> -->
-    </form>
   </div>
+
+  <div class="form-header">
+    <h2>{{ isLoginMode ? 'Welcome Back' : 'Create an account' }}</h2>
+    <p>
+      {{ isLoginMode ? "Don't have an account?" : "Already have an account?" }}
+      <a href="#" (click)="toggleMode(); $event.preventDefault();">
+        {{ isLoginMode ? "Sign up here" : "Log in" }}
+      </a>
+    </p>
+  </div>
+
+  <form (ngSubmit)="isLoginMode ? login() : signup()" class="form-content">
+    <div *ngIf="!isLoginMode" class="name-fields">
+      <input type="text" placeholder="First name" [(ngModel)]="firstName" name="firstName" required />
+      <input type="text" placeholder="Last name" [(ngModel)]="lastName" name="lastName" required />
+    </div>
+
+    <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
+    <input type="password" placeholder="Enter your password" [(ngModel)]="password" name="password" required />
+
+    <div *ngIf="!isLoginMode" class="terms">
+      <label>
+        <input type="checkbox" required />
+        I agree to the <a href="#">Terms & Conditions</a>
+      </label>
+    </div>
+
+    <button type="submit" class="primary-btn">
+      {{ isLoginMode ? 'Login' : 'Create account' }}
+    </button>
+
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  </form>
+</div>
+
 </div>

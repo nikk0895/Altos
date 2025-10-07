@@ -6,7 +6,7 @@ import { NavbarComponent } from '../../shared/navbar/navbar.component';
   standalone: true,
   imports: [NavbarComponent],
   templateUrl: './logs.component.html',
-  styleUrl: './logs.component.css'
+  styleUrls: ['./logs.component.css']
 })
 export class LogsComponent {
 

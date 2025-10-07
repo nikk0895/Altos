@@ -1,0 +1,10 @@
+@import '../../shared/styles/panel.css';
+
+/* Logs-specific enhancements */
+.logs-container h2 {
+  margin-bottom: 20px;
+}
+
+table tbody tr:hover {
+  background: #f9fafb;
+}

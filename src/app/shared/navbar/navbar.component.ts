@@ -13,8 +13,20 @@ export class NavbarComponent {
   constructor(private router: Router) {}
 
   logout(): void {
-    // Remove token and navigate to login page
+    // Clear session data and redirect to login
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
+  }
+  //  Sidebar navigation methods
+ 
+  goToDashboard(): void {
+    this.router.navigate(['/dashboard']);
+  }
+ goToConfigurator(): void {
+    this.router.navigate(['/configurator']);
+  }
+
+  goToLogs(): void {
+    this.router.navigate(['/logs']);
   }
 }

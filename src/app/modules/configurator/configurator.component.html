@@ -1,5 +1,22 @@
-<div class="configurator-container">
+<div class="configurator-container page-container">
   <app-navbar></app-navbar>
   <h2>Configurator</h2>
-  <p>Admin-only settings will go here.</p>
+
+  <div class="panel config">
+    <!-- <h3>Configuration Settings <span>(for Admins only)</span></h3> -->
+    <div class="config-form">
+      <label>Confidence Level Cut-off (85%)</label>
+      <input type="text" value="Dr. Lee" />
+
+      <div class="toggle-section">
+        <label>Auto-Summarize</label>
+        <input type="checkbox" checked />
+      </div>
+
+      <div class="toggle-section">
+        <label>Auto-Flag</label>
+        <input type="checkbox" />
+      </div>
+    </div>
+  </div>
 </div>

@@ -6,7 +6,7 @@ import { NavbarComponent } from '../../shared/navbar/navbar.component';
   standalone: true,
   imports: [NavbarComponent],
   templateUrl: './configurator.component.html',
-  styleUrl: './configurator.component.css'
+  styleUrls: ['./configurator.component.css']
 })
 export class ConfiguratorComponent {
 
